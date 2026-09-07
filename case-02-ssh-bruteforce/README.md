@@ -46,19 +46,22 @@ hydra -l adi -P wordlist.txt ssh://192.168.20.10 -t 8
 
 ### B. Attack Timeline (Volume vs. Success)
 
-<img width="850" height="300" alt="Attack timeline dashboard" src="evidence/case02-timeline.png" />
+<img width="745" height="226" alt="image" src="https://github.com/user-attachments/assets/7bf0d908-f7a1-4a4e-84dc-b210939911a6" />
+
 
 A sharp spike in failed login attempts lines up directly with the Phase 2 targeted Hydra run. Against that volume, the successful-login count stays close to flat — out of thousands of failures, only about 6 logins succeeded. This is the statistical signature of a focused, high-effort attack rather than random credential spraying.
 
 ### C. Top Attacking Sources and Targeted Users
 
-<img width="850" height="250" alt="Top attacker IPs and targeted usernames" src="evidence/case02-top-ips.png" />
+<img width="737" height="217" alt="image" src="https://github.com/user-attachments/assets/265acb11-2d3c-4045-b5af-8c3ef681b2a7" />
+
 
 `192.168.10.10` accounts for the large majority of login attempts (800+), confirming it as the primary attack vector. The username `adi` shows the highest volume of failed attempts, consistent with the Phase 2 targeting. The secondary IP `192.168.20.2` shows lower, unrelated activity — this is the injected noise that had to be separated from the real signal.
 
 ### D. Critical Alert: Successful Compromise
 
-<img width="850" height="200" alt="Table of successful SSH authentication events" src="evidence/case02-critical-table.png" />
+<img width="745" height="200" alt="image" src="https://github.com/user-attachments/assets/2c301b06-8c7d-43b0-bb50-e0224a2786b8" />
+
 
 Multiple `Accepted password` events for user `adi`, timestamped immediately after the brute force peak. This table represents the exact data a Tier 1 analyst would use to open an incident ticket for credential reset and host isolation — not the failed-attempt volume, but the confirmed successful authentication that followed it.
 
