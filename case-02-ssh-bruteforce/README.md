@@ -9,7 +9,7 @@ This case simulates a full-lifecycle SSH brute force attack against the Ubuntu t
 ## Lab Environment
 This case reuses the network setup from case-01. For full network architecture and VM configuration, refer to the dedicated infrastructure repository:
 
-**[View Lab Setup Repository](https://github.com/adi111byte/fundamental-blue-team-lab/blob/main/docs/lab-setup.md)**
+**[View Lab Setup Repository](https://github.com/adiiirmdhn/fundamental-blue-team-lab/blob/main/case-02-ssh-bruteforce/LAB-SETUP02.md)**
 
 **Quick Overview:**
 - **Attacker:** Kali Linux (`192.168.10.10`), Hydra v9.7, connected via VMnet2 (LAN)
