@@ -1,4 +1,0 @@
-# Replace this with the actual domains extracted from the sample .eml
-# One domain per line, plus a short note on reputation result once checked.
-#
-# example-domain.com - flagged malicious by 4/90 vendors on VirusTotal
