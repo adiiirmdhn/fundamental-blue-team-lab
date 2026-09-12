@@ -9,7 +9,7 @@ This case simulates a SQL Injection (SQLi) attack against a deliberately vulnera
 ## Lab Environment
 This case introduces a new victim role, a vulnerable web application, alongside the existing attacker/SIEM setup. For full network architecture and VM configuration, refer to the dedicated infrastructure repository:
 
-**[View Lab Setup Repository](https://github.com/adiiirmdhn/fundamental-blue-team-lab/blob/main/case-03-web-sqli-detection/LAB-SETUP03.md)**
+**[View Lab Setup Repository](https://github.com/adiiirmdhn/fundamental-blue-team-lab/blob/main/case-03-web-sqli-detection/LAB%20SETUP03.md)**
 
 **Quick Overview:**
 - **Attacker:** Kali Linux (`192.168.10.10`), sqlmap v1.10.6, connected via VMnet2 (LAN)
@@ -47,19 +47,22 @@ sqlmap -u "http://192.168.20.10/login.php" \
 
 ### B. Attack Timeline
 
-<img width="745" height="226" alt="image" src="evidence/case03-timeline.png" />
+<img width="736" height="219" alt="image" src="https://github.com/user-attachments/assets/60737f0b-cb94-4d7d-bc41-c79053f0cbe8" />
+
 
 Traffic spikes sharply at 14:53, isolated cleanly from baseline request volume once `user_agent` is checked against known sqlmap signatures.
 
 ### C. Top Attacking IPs and Tools
 
-<img width="737" height="217" alt="image" src="evidence/case03-top-ips.png" />
+<img width="730" height="235" alt="image" src="https://github.com/user-attachments/assets/dfd21d62-e21c-45eb-9664-a99e07a03818" />
+
 
 `192.168.10.10` accounts for the large majority of the attack traffic, confirming it as the primary attack vector. `sqlmap/1.10.6#stable` is identified as the tool via User-Agent extraction. The secondary IPs (`10.0.0.99`, `172.16.0.5`) show low, unrelated activity — this is the injected noise that had to be separated from the real signal.
 
 ### D. SQLi Attempt Detail Table
 
-<img width="745" height="200" alt="image" src="evidence/case03-critical-table.png" />
+<img width="743" height="412" alt="image" src="https://github.com/user-attachments/assets/f6cbc0d4-0f90-4102-8289-3f991da5f288" />
+
 
 A mix of HTTP `200` (payload processed without crashing the application) and `500` (application error, likely from aggressive fuzzing) responses. This table represents the exact data a Tier 1 analyst would use to open an incident ticket for patching and host review — not the request volume alone, but the confirmed injection payloads and their outcomes.
 
