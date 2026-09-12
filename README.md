@@ -1,35 +1,44 @@
-# Blue Team Triage Lab
+# 🛡️ Fundamental Blue Team Lab
 
-A set of self contained incident triage cases built in a home lab with pfSense as the network boundary. Each case documents a specific attack scenario from detection to writeup, including detection rules and small scripts used along the way.
+> **A self-contained incident triage portfolio built in an isolated home lab environment.**
 
-Bahasa Indonesia summary: see [README_id.md](./README_id.md)
+This repository documents a progressive journey through core Blue Team operations. Each case simulates a real-world attack scenario—from network reconnaissance to application-layer exploitation—and focuses on **detection, analysis, and documentation** using industry-standard tools like Suricata, Splunk Enterprise, and Sigma rules.
 
-## Why this repo exists
 
-I wanted a portfolio that shows how I actually triage an incident, not just a list of tools I installed. Every case follows the same process (see `docs/triage-sop.md`) so the reasoning stays consistent across different attack types.
+---
 
-## Lab setup
+## 📂 Case Studies
 
-pfSense runs as the router/firewall between an attacker VM and one or more target VMs in VirtualBox. Full topology and reproduction steps are in `docs/lab-setup.md`.
+| Case | Scenario | Tools Used | Key Skill Demonstrated |
+| :--- | :--- | :--- | :--- |
+| **[Case 01: Network Port Scan](case-01-port-scan/)** | Detecting Nmap SYN Stealth Scans | pfSense, Suricata IDS, TCPDump | Network Traffic Analysis & Signature Detection |
+| **[Case 02: SSH Brute Force](case-02-ssh-bruteforce/)** | Analyzing Auth Logs & Triage | Splunk Enterprise, Hydra, Linux CLI | Log Parsing, SPL Queries & False Positive Reduction |
+| **[Case 03: Web SQLi Detection](case-03-web-sqli-detection/)** | Identifying Automated Web Attacks | Apache, sqlmap, Splunk Dashboard | Web Log Forensics, Regex Extraction & Visualization |
 
-## Cases
+---
 
-| Case | Attack type | Detection method | Status |
-|---|---|---|---|
-| [case-01-port-scan](./case-01-port-scan) | Nmap port scan | Suricata (pfSense) | In progress |
-| [case-02-ssh-bruteforce](./case-02-ssh-bruteforce) | SSH brute force | auth.log + custom Python parser | In progress |
-| [case-03-dns-phishing](./case-03-dns-phishing) | Phishing domains | Manual header review + domain reputation script | In progress |
+## 🏗️ Lab Architecture
 
-## Shared docs
+All cases are executed in an isolated virtualized environment to ensure safety and reproducibility:
 
-- `docs/triage-sop.md`: the 6 step process used in every case
-- `docs/lab-setup.md`: how to reproduce the lab
-- `docs/wireshark-filters.md`: filters actually used across cases, not a generic cheat sheet
+-   **Network Boundary:** pfSense Firewall/Router (NAT & LAN segmentation)
+-   **Attacker Machine:** Kali Linux (2024.x)
+-   **Victim Machines:** Ubuntu Server 22.04 LTS (Apache/SSH), Windows 10 (Splunk Host)
+-   **SIEM Platform:** Splunk Enterprise 9.x (Free License)
 
-## Final report
+## 🎯 Why This Repo Exists
 
-`report/final-report.md` summarizes all three cases in one place for a quick read.
+I wanted a portfolio that shows **how I actually triage an incident**, not just a list of tools I've installed. Every case follows a structured methodology:
+1.  **Simulation:** Executing attacks in a controlled environment.
+2.  **Detection:** Capturing logs and writing detection logic (Rules/Queries).
+3.  **Analysis:** Investigating the data to distinguish noise from true positives.
+4.  **Reporting:** Documenting findings with clear visualizations and actionable insights.
 
-## Contact
+## 📄 Final Report
 
-adirmadhani@gmail.com | [LinkedIn](https://www.linkedin.com/in/adiramadhani-148400353)
+For a high-level executive summary of all completed cases, key findings, and lessons learned, please refer to the **[Final Report](report/final-report.md)**.
+
+---
+
+## ⚠️ Disclaimer
+*This repository is for educational and portfolio purposes only. All attacks were performed in a completely isolated home lab environment against systems I own. Never perform these actions on networks or systems without explicit written permission.*
