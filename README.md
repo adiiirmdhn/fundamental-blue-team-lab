@@ -2,7 +2,7 @@
 
 > A self-contained incident triage portfolio built in an isolated home lab environment.
 
-This repository documents a progressive journey through core Blue Team operations. Each case simulates a real-world attack scenario—from network reconnaissance to application-layer exploitation—and focuses on detection, analysis, and documentation using industry-standard tools like Suricata, Splunk Enterprise, and Sigma rules.
+This repository documents a progressive journey through core Blue Team operations. Each case simulates a real-world attack scenario from network reconnaissance to application-layer exploitation and focuses on detection, analysis, and documentation using industry-standard tools like Suricata, Splunk Enterprise, and Sigma rules.
 
 ## 📂 Case Studies
 
